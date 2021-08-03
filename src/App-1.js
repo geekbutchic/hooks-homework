@@ -1,31 +1,31 @@
 import React, { useState } from "react";
 import "./App.css";
 
-function App() {
-  //ARRAY FORMAT
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+function CustomHooksArray(initialState) {
+  const [value, setValue] = useState(initialState);
 
-  function handleOnSubmit(e) {
-    e.preventDefault();
-    console.log(username);
-    console.log(email);
-    console.log(password);
+  function onChange(e) {
+    setValue(e.target.value);
+    console.log(e.target.value);
   }
+  return [value, onChange];
+}
+
+function App() {
+  const [userName, userNameOnChange] = CustomHooksArray("");
 
   return (
     <div className="App border-4 border-indigo-400 rounded-md bg-auto">
-      <form onSubmit={handleOnSubmit}>
+      <form>
         <input
           type="text"
           placeholder="USERNAME"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={userName}
+          onChange={(e) => userNameOnChange(e)}
           autoFocus
         />
         <br />
-        <input
+        {/* <input
           type="email"
           placeholder="EMAIL"
           value={email}
@@ -37,8 +37,8 @@ function App() {
           placeholder="PASSWORD"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-        />
-          <div className="bg-red-500 hover:bg-red-500 rounded-md">
+        /> */}
+        <div className="bg-red-500 hover:bg-red-500 rounded-md">
           <button type="submit">SUBMIT</button>
         </div>
       </form>
