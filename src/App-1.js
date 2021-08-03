@@ -13,6 +13,8 @@ function CustomHooksArray(initialState) {
 
 function App() {
   const [userName, userNameOnChange] = CustomHooksArray("");
+  const [email, setEmailOnChange] = CustomHooksArray("");
+  const [password, setPasswordOnChange] = CustomHooksArray("")
 
   return (
     <div className="App border-4 border-indigo-400 rounded-md bg-auto">
@@ -25,19 +27,19 @@ function App() {
           autoFocus
         />
         <br />
-        {/* <input
+        <input
           type="email"
           placeholder="EMAIL"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setEmailOnChange(e)}
         />
         <br />
         <input
           type="password"
           placeholder="PASSWORD"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        /> */}
+          onChange={(e) => setPasswordOnChange(e)}
+        />
         <div className="bg-red-500 hover:bg-red-500 rounded-md">
           <button type="submit">SUBMIT</button>
         </div>
