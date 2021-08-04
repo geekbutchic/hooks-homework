@@ -1,24 +1,39 @@
+//ARRAY VERSION
 import React, { useState } from "react";
 import "./App.css";
 
 function CustomHooksArray(initialState) {
   const [value, setValue] = useState(initialState);
 
-  function onChange(e) {
+  function onChange (e) {
     setValue(e.target.value);
     console.log(e.target.value);
   }
-  return [value, onChange];
+  function clearInput () {
+    setValue("");
+  }
+  function greetUser () {
+    alert("Hi, " + value)
+  }
+  return [value, onChange, clearInput, greetUser];
 }
 
 function App() {
-  const [userName, userNameOnChange] = CustomHooksArray("");
-  const [email, setEmailOnChange] = CustomHooksArray("");
-  const [password, setPasswordOnChange] = CustomHooksArray("")
+  const [userName, userNameOnChange, clearUsernameInput, greetUserFirstName ] = CustomHooksArray("");
+  const [email, setEmailOnChange, clearEmailInput] = CustomHooksArray("");
+  const [password, setPasswordOnChange, clearPasswordInput] = CustomHooksArray("");
+
+  function handleOnSubmit(e) {
+    e.preventDefault();
+    greetUserFirstName()
+    clearUsernameInput();
+    clearEmailInput();
+    clearPasswordInput();
+  }
 
   return (
     <div className="App border-4 border-indigo-400 rounded-md bg-auto">
-      <form>
+      <form onSubmit={handleOnSubmit}>
         <input
           type="text"
           placeholder="USERNAME"
