@@ -1,66 +1,30 @@
-//ARRAY VERSION
+//OBJECT VERSION
 import React, { useState } from "react";
+
 import "./App.css";
 
-function CustomHooksArray(initialState) {
+function CustomHooksObjectsFormat(initialState) {
   const [value, setValue] = useState(initialState);
 
-  function onChange (e) {
+  function onChange(e) {
     setValue(e.target.value);
-    console.log(e.target.value);
   }
-  function clearInput () {
-    setValue("");
-  }
-  function greetUser () {
-    alert("Hi, " + value)
-  }
-  function showValue () {
-      console.log(value);
-  }
-  return [value, onChange, clearInput, greetUser, showValue];
+
+  return { value, onChange };
 }
 
 function App() {
-  const [userName, userNameOnChange, clearUsernameInput, greetUserFirstName, showNameValue ] = CustomHooksArray("");
-  const [email, setEmailOnChange, clearEmailInput, ,showEmailValue] = CustomHooksArray("");
-  const [password, setPasswordOnChange, clearPasswordInput, ,showPasswordValue] = CustomHooksArray("");
-
-  function handleOnSubmit(e) {
-    e.preventDefault();
-    showNameValue()
-    showEmailValue()
-    showPasswordValue()
-    greetUserFirstName()
-    clearUsernameInput();
-    clearEmailInput();
-    clearPasswordInput();
-  }
+  const firstName = CustomHooksObjectsFormat("");
+  console.log(firstName);
 
   return (
     <div className="App border-4 border-indigo-400 rounded-md bg-auto">
-      <form onSubmit={handleOnSubmit}>
-        <input
-          type="text"
-          placeholder="USERNAME"
-          value={userName}
-          onChange={(e) => userNameOnChange(e)}
-          autoFocus
-        />
+      <form>
+        <input type="text" placeholder="USERNAME" autoFocus />
         <br />
-        <input
-          type="email"
-          placeholder="EMAIL"
-          value={email}
-          onChange={(e) => setEmailOnChange(e)}
-        />
+        <input type="email" placeholder="EMAIL" />
         <br />
-        <input
-          type="password"
-          placeholder="PASSWORD"
-          value={password}
-          onChange={(e) => setPasswordOnChange(e)}
-        />
+        <input type="password" placeholder="PASSWORD" />
         <div className="bg-red-500 hover:bg-red-500 rounded-md">
           <button type="submit">SUBMIT</button>
         </div>
