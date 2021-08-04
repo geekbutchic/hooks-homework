@@ -15,16 +15,22 @@ function CustomHooksArray(initialState) {
   function greetUser () {
     alert("Hi, " + value)
   }
-  return [value, onChange, clearInput, greetUser];
+  function showValue () {
+      console.log(value);
+  }
+  return [value, onChange, clearInput, greetUser, showValue];
 }
 
 function App() {
-  const [userName, userNameOnChange, clearUsernameInput, greetUserFirstName ] = CustomHooksArray("");
-  const [email, setEmailOnChange, clearEmailInput] = CustomHooksArray("");
-  const [password, setPasswordOnChange, clearPasswordInput] = CustomHooksArray("");
+  const [userName, userNameOnChange, clearUsernameInput, greetUserFirstName, showNameValue ] = CustomHooksArray("");
+  const [email, setEmailOnChange, clearEmailInput, ,showEmailValue] = CustomHooksArray("");
+  const [password, setPasswordOnChange, clearPasswordInput, ,showPasswordValue] = CustomHooksArray("");
 
   function handleOnSubmit(e) {
     e.preventDefault();
+    showNameValue()
+    showEmailValue()
+    showPasswordValue()
     greetUserFirstName()
     clearUsernameInput();
     clearEmailInput();
