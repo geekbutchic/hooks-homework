@@ -16,7 +16,7 @@ function CustomHooksObjectsFormat(initialState) {
 }
 
 function App() {
-  const {
+  const {//RENAME FOR SAKES OF NAMING COLLISION 
     value: userName,
     onChange: userNameOnChange,
     clearInput: clearUserNameInput,
